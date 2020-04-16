@@ -1,0 +1,331 @@
+@import "config";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+//Almennt utlit
+html { /* stylelint-disable-line */
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: scroll; // alltaf hafa y skrollbar
+  font-family: $font-main;
+  font-size: 1em;
+}
+
+h1 { /* stylelint-disable-line */
+  font-family: $font-title;
+}
+
+h2 { /* stylelint-disable-line */
+  font-family: $font-title;
+}
+
+h3 { /* stylelint-disable-line */
+  font-family: $font-title;
+}
+
+.container { //div tag yfir allt nema header
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.main { //div til að setja content max-width
+  width: 100%;
+  max-width: $max-width;
+}
+//Almennt utlit endar
+
+//fyrirlestra section byrjar
+.fyrirlestrar { //div tag til að stýra utlit fyrirlestra div-tagga
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: $gutter*2;
+  padding-right: $gutter;
+  padding-left: $gutter;
+  @media (min-width: 800px) {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: $gutter;
+  }
+  @media (min-width: 1200px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  &__img {
+    width: 100%;
+  }
+
+  &__takkar { //divtagg yfir css html og javascript buttons
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-right: $gutter;
+    padding-left: $gutter;
+    margin-top: $gutter*2;
+    @media (min-width: 800px) {
+      justify-content: space-around;
+    }
+    @media (min-width: 1500px) {
+      justify-content: center;
+    }
+  }
+
+  &__btn { // class fyrir alla takka
+    padding: $gutter/2;
+    font-family: $font-title;
+    font-size: 1.5em;
+    font-weight: bold;
+    background-color: $whitegrey;
+    border-radius: 20px;
+    //border: 5px;
+  }
+
+  &__html {
+    transition: 0.3s;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__javascript {
+    transition: 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $grey;
+    }
+  }
+
+  &__css { // css takki
+    transition: 0.3s;
+    @media (min-width: 1500px) {
+      margin-right: $gutter*2;
+      margin-left: $gutter*2;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: $grey;
+    }
+  }
+
+  &__anmynd { // fyrirlestrar sem hafa ekki mynd
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.quote {
+  padding-bottom: $gutter/2;
+  background-color: $whitegrey;
+  justify-content: space-between;
+}
+
+.quote__p {
+  // p-tögg í hvert einasta fyrirlestur
+  padding-top: $gutter;
+  padding-left: $gutter;
+  font-size: 1.3em;
+}
+
+.fyrirlestur { // hvert einasti fyrirlestur
+  //display: run-in;
+  padding-bottom: $gutter/2;
+  background-color: $whitegrey;
+  transition: 0.3s;
+  justify-content: space-between;
+
+  &__p { // p-tögg í hvert einasta fyrirlestur
+    padding-top: $gutter;
+    padding-left: $gutter;
+    font-size: 1.3em;
+  }
+
+  &__info {
+    display: grid;
+    margin-top: auto;
+    grid-template-columns: 87% 13%;
+  }
+
+  &__check {
+    display: flex;
+    //justify-content: flex-end;
+    padding-top: 30px;
+    margin-right: auto;
+  }
+
+  &__check-p {
+    color: $darkgreen;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: $grey;
+  }
+
+  &__h2 { // h2-tagg í hvert fyrirlestur
+    padding-left: $gutter;
+    font-family: $font-title;
+    font-size: $grunnleturstaerd*2;
+  }
+}
+
+//fyrirlestra section endar
+
+//div tögg sem ekki eru í fyrirlestra div
+
+.btnContainer { // container utan um takka-divið
+  width: 100%;
+  max-width: $max-width;
+  margin-bottom: $gutter*2;
+}
+
+.btn__active {
+  background-color: $green;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: $darkgreen;
+  }
+}
+
+.header { //hausinn
+  position: relative;
+  max-width: 100%;
+  height: 100%;
+  overflow: hidden;
+  text-align: center;
+
+  img { // mynd á haus
+    width: 800px;
+    height: auto;
+    filter: alpha(opacity=50);
+    opacity: 0.6;
+    @media (min-width: 800px) {
+      width: 100vw;
+      height: auto;
+      overflow: visible;
+    }
+  }
+
+  &__content { //texti í haus
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    padding-top: 15vw;
+    font-size: 1.3em;
+    transform: translate(-50%, -50%);
+  }
+
+  &__content--h1 { //heading í haus
+    font-size: $grunnleturstaerd*3;
+  }
+
+  &__content--p { // p tagg í haus
+    font-size: $grunnleturstaerd;
+  }
+}
+
+header { /* stylelint-disable-line */ //header elementið sjálft
+  height: 400px;
+}
+
+// index.html lokið
+
+//fyrirlestur.html
+.lecture {
+  display: grid;
+  width: 100%;
+  max-width: 800px;
+  padding-right: $gutter;
+  padding-left: $gutter;
+  margin-top: $gutter*2;
+  grid-template-columns: 1fr;
+  row-gap: $gutter*2;
+
+  &__last {
+    margin: $gutter*2;
+    line-height: 2;
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  &__last-pk:hover {
+    cursor: default;
+  }
+
+  &__last-pt:hover {
+    cursor: pointer;
+  }
+
+  &__ul {
+    font-size: 1.3em;
+  }
+
+  &__iframe--vid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__iframe {
+    position: relative;
+    // Calculated from the aspect ration of the content (in case of 16:9 it is 9/16= 0.5625)
+    padding-top: 56.25%;
+    overflow: hidden;
+  }
+
+  &__div {
+    width: 100%;
+  }
+
+  &__image {
+    max-width: 100%;
+  }
+
+  &__p {
+    font-family: Lora, "Times New Roman";
+    font-size: 1.5em;
+  }
+
+  &__h1 {
+    font-family: monospace;
+    font-size: 2em;
+  }
+}
+
+.klarad {
+  color: $green;
+}
+
+.klarad::before {
+  content: "✓ ";
+}
+//initialize display lecture
+.html {
+  display: none;
+}
+
+.css {
+  display: none;
+}
+
+.javascript {
+  display: none;
+}
